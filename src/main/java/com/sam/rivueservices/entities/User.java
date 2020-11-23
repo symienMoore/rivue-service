@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.List;
 
 @Document
 public class User {
@@ -18,8 +19,9 @@ public class User {
     private String password;
     private Boolean isAdmin;
     private Date created_at = new Date();
+    private List<Rivue> rivues;
 
-    public User(String id, String name, String username, String email, String password, Boolean isAdmin, Date created_at) {
+    public User(String id, String name, String username, String email, String password, Boolean isAdmin, Date created_at, List<Rivue> rivues) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -27,6 +29,7 @@ public class User {
         this.password = password;
         this.isAdmin = isAdmin;
         this.created_at = created_at;
+        this.rivues = rivues;
     }
 
     public User() {
@@ -72,6 +75,14 @@ public class User {
         isAdmin = admin;
     }
 
+    public List<Rivue> getRivues() {
+        return rivues;
+    }
+
+    public void setRivues(List<Rivue> rivues) {
+        this.rivues = rivues;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -82,6 +93,7 @@ public class User {
             ", password='" + password + '\'' +
             ", isAdmin=" + isAdmin +
             ", created_at=" + created_at +
+            ", rivues=" + rivues +
             '}';
     }
 }

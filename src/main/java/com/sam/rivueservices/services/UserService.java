@@ -20,4 +20,12 @@ public class UserService implements UserDetailsService {
          User user = repo.findUserByUsername(username);
          return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
     }
+
+    public void addUser(User user) throws Exception {
+            if (repo.findUserByUsername(user.getUsername()) == null) {
+                repo.save(user);
+            } else {
+                System.out.println("the user exists");
+            }
+    }
 }
