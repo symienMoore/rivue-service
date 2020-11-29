@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UserController {
     private User user;
-    @Autowired
-    private UserRepository userRepo;
 
     @Autowired
     private UserService service;
@@ -43,6 +41,7 @@ public class UserController {
         service.addUser(user);
     }
 
+
     @PostMapping("/login")
     public ResponseEntity<?> logInUser(@RequestBody AuthRequest authRequest) throws Exception {
         try {
@@ -55,7 +54,5 @@ public class UserController {
         String token =  jwt.generateToken(authRequest.getUsername());
         return ResponseEntity.ok(new AuthResponse(token));
     }
-
-
 }
 

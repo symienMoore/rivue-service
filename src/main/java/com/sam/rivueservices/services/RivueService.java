@@ -15,4 +15,8 @@ public class RivueService {
     public void addRivue(Rivue rivue) {
         rivueRepo.save(rivue);
     }
+
+    public void deleteRivue(Rivue rivue) {
+        rivueRepo.delete(rivue);
+    }
 }
